@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Palindrome</title>
+<style>
+  body{padding:10px} 
+  #in{padding:20px;border:solid 1px red;margin-bottom:10px;}
+  #out{background-color:gold;padding:20px;border:solid 1px red;}
+  #check{color:red;margin:10px;}
+</style>
+</head>
+
+<body>
+<h1>Palindrome Detector</h1>
+<div id="in">
+  Enter Word ~ <input type="text" id="input" size="100">
+  <input type="button" id="check" value="Check Word" onclick="check();">
+</div>
+<div id="out">
+  This word is a Palindrom ~<br><input type="text" id="result" size="20" value="">
+</div>
+
+<script type="text/javascript">
+
+  function rev(word){
+  var  string = "";
+	for (var i = word.length ; i > 0 ; i--){
+		  string += word.charAt(i-1)
+	 }
+	return string;
+  }
+  
+  function palin(word){
+	return (word==rev(word));
+  }
+  
+  function removal(word){
+	var patt=/[^a-z0-9]/gi;
+	var str2=word.replace(patt,"");
+	return (str2);	  
+  }
+  
+  function check(){
+	var word = document.getElementById('input').value;
+	word = word.toLowerCase();
+	word=removal(word);
+	document.getElementById('result').value=palin(word);
+	return true;
+ }
+</script>
+
+</body>
+</html>
