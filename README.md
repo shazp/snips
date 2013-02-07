@@ -1,0 +1,4 @@
+snips
+=====
+
+JavaScript snippets
