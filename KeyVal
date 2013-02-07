@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Sum of Key Value's</title>
+
+    <style type="text/css">
+	  	  body{padding:20px;}
+		  div {float:left;padding:10px;}
+          #inputs {padding:10px;margin-bottom:10px; width:200px;height:200px;}
+          #sum {margin-bottom:10px;color:red;}
+          #result {background-color:gold;padding:10px;border:solid 1px red;width:200px;height:200px;}
+      </style>
+</head>
+<body>
+<h1>Key Counter</h1>
+<div>
+		Key,Value<br>
+		<textarea id="inputs">
+John,2
+Jane,3
+John,4
+Jane,9</textarea><br>
+		
+		<input type="button" id="sum" onClick="skip()" value="Sum Keys" /><br>
+</div>
+<div class="result">		
+
+		Unique Key     Sum<br>
+
+      <textarea id="result"></textarea>
+</div>
+		<script type="text/javascript">
+			
+          function skip(){	
+            
+            var myinput = document.getElementById('inputs').value + '\n';
+			      var myoutput = document.getElementById('result');
+            
+            var arrayString = myinput.split('\n');
+           
+            myName = new Array();
+            myCount = new Array();
+
+            for (var i=0; i<=arrayString.length; i++) {
+               if (arrayString[i]==0){break;}
+               var data = arrayString[i].split(',');
+        
+               var myDataArr= new Array();
+               myDataArr = data;
+               
+               if (i==0){ 
+                 myName[0] = myDataArr[0];
+                 myCount[0] = parseInt(myDataArr[1]);
+               }
+               else{
+                  var y=myName.indexOf(myDataArr[0]);
+                 if (y != -1 )
+                 {
+                     myCount[y] += parseInt(myDataArr[1]);
+                 }
+                 else { 
+                   myName.push(myDataArr[0]);
+                   myCount.push(parseInt(myDataArr[1]));
+                 }
+               }
+              }//end for
+            
+            var dzy = "";
+            for(var i=0; i<myName.length; i++)
+            {
+              dzy +=  myName[i] + " " + myCount[i] + "\n";
+			        document.getElementById('result').value = dzy;
+            }
+          }
+		</script>
+	</body>
+</html>
